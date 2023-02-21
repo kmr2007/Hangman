@@ -1,0 +1,10 @@
+body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+img {
+    width: 225px;
+    height: 225px;
+}
+.letters {
+    font-size: 50px;
+}
