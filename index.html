@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Hangman</title>
-        <link rel="stylesheet" href="style.css">
-        <script defer src="main.js"></script>
-    </head>
-    <body>
-        <h1>Hangman</h1>
-        <div id="beginGameBtn"><button id="btn">Begin Game</button></div>
-        <hr>
-        <p class="letters" id="letters"> </p>
-        <div id="setUp">
-        </div>
-    </body>
+  <head>
+    <title>Hangman</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <h1>Hangman</h1>
+
+    <div id="beginGameBtn"><button id="btn">Begin Game</button></div>
+    <hr />
+    <div id="img"><img src="img/stand0.png" alt="" /></div>
+    <p id="wordLength"></p>
+    <p>Guess a letter: <input type="text" name="" id="letterGuess" /></p>
+    <button id="guess" type="submit">Guess</button>
+  </body>
 </html>
