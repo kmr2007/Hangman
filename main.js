@@ -12,16 +12,14 @@ let word = prompt(
 let wordLength = word.length;
 let wordLengthEl = document.getElementById("wordLength");
 let incorrectGuesses = 0;
+let gameBegin = "false"
 
 //event listeners
-document.getElementById("btn").addEventListener("click", () => {
-  wordLengthDefine();
-  setUp();
-});
+document.getElementById("btn").addEventListener("click", setUp);
 document.getElementById("guess").addEventListener("click", letterGuessing);
 // Board Set Up
 
-function wordLengthDefine() {
+function setUp() {
   if (wordLength <= 3) {
     alert("Your word is too short. Please refresh and try again");
   } else if (wordLength >= 12) {
@@ -45,11 +43,10 @@ function wordLengthDefine() {
   } else {
     alert("Something went wrong. Refresh and try again");
   }
-}
-function setUp() {
   document.getElementById("wordLength").innerHTML = wordLength;
   document.getElementById("beginGameBtn").innerHTML = "";
-}
+  gameBegin = "true"; }
+
 
 // Letter Guessing
 function letterGuessing() {
@@ -58,9 +55,11 @@ function letterGuessing() {
     .value.toLowerCase();
   let letterPosition = +word.indexOf(letterGuessed);
   let numberOfOccurences = word.split(letterGuessed).length - 1;
-  console.log(numberOfOccurences);
-
-  if (numberOfOccurences === 1) {
+  document.getElementById("letterGuess").value = "";
+  if (gameBegin !== "true"){
+    alert("Please click 'Begin Game'")
+   } 
+  else if (numberOfOccurences === 1) {
     wordLength = wordLength.replaceAt(letterPosition, letterGuessed);
     document.getElementById("wordLength").innerHTML = wordLength;
   } else if (numberOfOccurences > 1) {
@@ -73,4 +72,10 @@ function letterGuessing() {
       "img"
     ).innerHTML = `<img src="img/stand${incorrectGuesses}.png" alt="" />`;
   }
+
+  if (wordLengthEl.innerHTML === word) {
+    document.getElementById("winLose").innerHTML = "You Win!"
+  } else if (incorrectGuesses === 10) {
+    document.getElementById("winLose").innerHTML = "You Lose!"
+    }
 }
