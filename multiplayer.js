@@ -10,7 +10,7 @@ let word = prompt(
   "Enter one word between 4 and 11 letters. (Don't let the other player see!)"
 ).toLowerCase();
 let wordLength = word.length;
-let wordLengthEl = wordLengthEl;
+let wordLengthEl = document.getElementById("wordlength");
 let incorrectGuesses = 0;
 let gameBegin = "false";
 
