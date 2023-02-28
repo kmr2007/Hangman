@@ -29,7 +29,7 @@ const wordList = [
 const wordSelection = Math.floor(Math.random() * wordList.length);
 const word = wordList[wordSelection];
 let wordLength = word.length;
-let wordLengthEl = document.getElementById("wordLength");
+let wordLengthEl = wordLengthEl;
 let incorrectGuesses = 0;
 let gameBegin = "false";
 
@@ -62,7 +62,7 @@ function setUp() {
   } else {
     alert("Something went wrong. Refresh and try again");
   }
-  document.getElementById("wordLength").innerHTML = wordLength;
+  wordLengthEl.innerHTML = wordLength;
   document.getElementById("beginGameBtn").innerHTML = "";
   gameBegin = "true";
 }
@@ -85,34 +85,34 @@ function letterGuessing() {
     alert("Please enter a 1 letter guess.");
   } else if (numberOfOccurences === 1) {
     wordLength = wordLength.replaceAt(letterPosition, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
   } else if (numberOfOccurences === 2) {
     wordLength = wordLength.replaceAt(letterPosition, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
 
     wordLength = wordLength.replaceAt(letterPosition2, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
   } else if (numberOfOccurences === 3) {
     wordLength = wordLength.replaceAt(letterPosition, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
 
     wordLength = wordLength.replaceAt(letterPosition2, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
 
     wordLength = wordLength.replaceAt(letterPosition3, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
   } else if (numberOfOccurences === 4) {
     wordLength = wordLength.replaceAt(letterPosition, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
 
     wordLength = wordLength.replaceAt(letterPosition2, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
 
     wordLength = wordLength.replaceAt(letterPosition3, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
 
     wordLength = wordLength.replaceAt(letterPosition4, letterGuessed);
-    document.getElementById("wordLength").innerHTML = wordLength;
+    wordLengthEl.innerHTML = wordLength;
   } else if (numberOfOccurences === 0) {
     ++incorrectGuesses;
     document.getElementById(
@@ -128,5 +128,6 @@ function letterGuessing() {
     document.getElementById("winLose").innerHTML = "You Win!";
   } else if (incorrectGuesses === 10) {
     document.getElementById("winLose").innerHTML = "You Lose!";
+    wordLengthEl.innerHTML = `The word was ${word}!`;
   }
 }
