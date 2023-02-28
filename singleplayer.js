@@ -29,7 +29,7 @@ const wordList = [
 const wordSelection = Math.floor(Math.random() * wordList.length);
 const word = wordList[wordSelection];
 let wordLength = word.length;
-let wordLengthEl = document.getElementById("wordlength");
+let wordLengthEl = document.getElementById("wordLength");
 let incorrectGuesses = 0;
 let gameBegin = "false";
 
