@@ -1,4 +1,4 @@
-// Program Title
+// Hangman by Kaydence Riehl
 // Replace at
 String.prototype.replaceAt = function (index, char) {
   let a = this.split("");
@@ -12,7 +12,7 @@ let word = prompt(
 let wordLength = word.length;
 let wordLengthEl = document.getElementById("wordLength");
 let incorrectGuesses = 0;
-let gameBegin = "false"
+let gameBegin = "false";
 
 //event listeners
 document.getElementById("btn").addEventListener("click", setUp);
@@ -45,8 +45,8 @@ function setUp() {
   }
   document.getElementById("wordLength").innerHTML = wordLength;
   document.getElementById("beginGameBtn").innerHTML = "";
-  gameBegin = "true"; }
-
+  gameBegin = "true";
+}
 
 // Letter Guessing
 function letterGuessing() {
@@ -54,28 +54,60 @@ function letterGuessing() {
     .getElementById("letterGuess")
     .value.toLowerCase();
   let letterPosition = +word.indexOf(letterGuessed);
+  let letterPosition2 = +word.indexOf(letterGuessed, letterPosition + 1);
+  let letterPosition3 = +word.indexOf(letterGuessed, letterPosition2 + 1);
+  let letterPosition4 = +word.indexOf(letterGuessed, letterPosition3 + 1);
   let numberOfOccurences = word.split(letterGuessed).length - 1;
   document.getElementById("letterGuess").value = "";
-  if (gameBegin !== "true"){
-    alert("Please click 'Begin Game'")
-   } 
-  else if (numberOfOccurences === 1) {
+
+  if (gameBegin !== "true") {
+    alert("Please click 'Begin Game'");
+  } else if (letterGuessed.length !== 1) {
+    alert("Please enter a 1 letter guess.");
+  } else if (numberOfOccurences === 1) {
     wordLength = wordLength.replaceAt(letterPosition, letterGuessed);
     document.getElementById("wordLength").innerHTML = wordLength;
-  } else if (numberOfOccurences > 1) {
+  } else if (numberOfOccurences === 2) {
     wordLength = wordLength.replaceAt(letterPosition, letterGuessed);
+    document.getElementById("wordLength").innerHTML = wordLength;
+
+    wordLength = wordLength.replaceAt(letterPosition2, letterGuessed);
+    document.getElementById("wordLength").innerHTML = wordLength;
+  } else if (numberOfOccurences === 3) {
+    wordLength = wordLength.replaceAt(letterPosition, letterGuessed);
+    document.getElementById("wordLength").innerHTML = wordLength;
+
+    wordLength = wordLength.replaceAt(letterPosition2, letterGuessed);
+    document.getElementById("wordLength").innerHTML = wordLength;
+
+    wordLength = wordLength.replaceAt(letterPosition3, letterGuessed);
+    document.getElementById("wordLength").innerHTML = wordLength;
+  } else if (numberOfOccurences === 4) {
+    wordLength = wordLength.replaceAt(letterPosition, letterGuessed);
+    document.getElementById("wordLength").innerHTML = wordLength;
+
+    wordLength = wordLength.replaceAt(letterPosition2, letterGuessed);
+    document.getElementById("wordLength").innerHTML = wordLength;
+
+    wordLength = wordLength.replaceAt(letterPosition3, letterGuessed);
+    document.getElementById("wordLength").innerHTML = wordLength;
+
+    wordLength = wordLength.replaceAt(letterPosition4, letterGuessed);
     document.getElementById("wordLength").innerHTML = wordLength;
   } else if (numberOfOccurences === 0) {
     ++incorrectGuesses;
-    console.log(incorrectGuesses);
     document.getElementById(
       "img"
     ).innerHTML = `<img src="img/stand${incorrectGuesses}.png" alt="" />`;
+    document.getElementById("lettersGuessedEl").innerHTML =
+      document.getElementById("lettersGuessedEl").innerHTML +
+      letterGuessed +
+      " ";
   }
 
   if (wordLengthEl.innerHTML === word) {
-    document.getElementById("winLose").innerHTML = "You Win!"
+    document.getElementById("winLose").innerHTML = "You Win!";
   } else if (incorrectGuesses === 10) {
-    document.getElementById("winLose").innerHTML = "You Lose!"
-    }
+    document.getElementById("winLose").innerHTML = "You Lose!";
+  }
 }
