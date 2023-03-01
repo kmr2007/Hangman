@@ -25,6 +25,19 @@ const wordList = [
   "luxury",
   "ship",
   "words",
+  "loving",
+  "abruptly",
+  "absurd",
+  "abyss",
+  "avenue",
+  "beekeeper",
+  "blizzard",
+  "bookworm",
+  "buffalo",
+  "cobweb",
+  "dwarves",
+  "fixable",
+  "fuchsia",
 ];
 const wordSelection = Math.floor(Math.random() * wordList.length);
 const word = wordList[wordSelection];
